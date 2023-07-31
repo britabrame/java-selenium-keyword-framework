@@ -1,0 +1,36 @@
+--- Prompt ---
+Provide a code sample of a Selenium/keyword-driven framework created in 4-6 hours.
+
+--- Introduction ---
+This is a sample of a "keyword-driven" Selenium/Java framework which executes test cases where the steps, objects, and
+  locators are externally defined in an excel sheet. The advantage of such a framework is that once all keywords are defined
+  and methods implemented for each, there should be very little or no additional coding needed to extend the framework,
+  as users can simply add test cases into an excel sheet.
+
+--- Features currently included in the framework ---
+ - A file located in ...\java-selenium-keyword-framework\src\main\java\excelData\testCases.xlsx contains the test
+ cases that will be executed.
+ - Test case excel template:
+    - Title: title of the test case, appears on the same row as the first test step
+    - Step ID: Test step id
+    - Keyword: Action to be performed; currently supported keywords are "openBrowser," "goTo," "input," "click,"
+    "closeBrowser"
+    - Object: The value of the locator id, class, or xpath
+    - Object Type: Object's locator type; valid values are "Id," "class," or "xpath"
+    - Data: Data that is necessary to perform the action (username, password, search criteria, etc)
+    - Description: Description of the test step
+
+--- Current limitations ---
+Given the prompted time limit, the following features are not present in this implementation, but should be later implemented:
+- Support for Asserts: Asserts can be implemented as any other keywords, such as "assertElementVisible,"
+or "assertValue" using TestNG or JUnit test frameworks.
+- Reporting: There is no integration with any reporting tools, but it could be added using a tool such as ExtentReports.
+- Test case validation: Currently the test case excel sheet allows the user to input any values into the Keywords column
+without validation, but ideally users would be provided a sheet where the Keyword column has dropdown values
+ corresponding to the currently supported keywords.
+
+--- How to execute test script ---
+ - Execute the tests from the ExecutionTest class.
+ - It is expected due to the time limit on this assignment that the test script will fail to execute all steps in it's
+ current state, but currently the user should be able to see the navigation to https://www.saucedemo.com/, input of
+ username and password, and login.
