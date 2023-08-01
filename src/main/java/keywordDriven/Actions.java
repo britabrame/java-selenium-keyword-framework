@@ -11,8 +11,6 @@ public class Actions {
 
     /** This method takes test step details and calls the appropriate action method for the given step.*/
     public void perform(String keyword, String obj, String objectType, String data, String desc) throws InterruptedException {
-        System.out.println(data);
-
         switch(keyword.toLowerCase()) {
             case "openbrowser":
                 openBrowser();

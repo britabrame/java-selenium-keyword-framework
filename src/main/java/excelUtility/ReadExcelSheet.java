@@ -80,7 +80,7 @@ public class ReadExcelSheet {
                 data = tests.get(i).getStep(p).getData();
                 description = tests.get(i).getStep(p).getDescription();
 
-                System.out.println("  Executing step: " + description + ": " + data);
+                System.out.println("  Executing step: " + description);
                 actions.perform(keyword,object,objectType,data,description);
             }
         }
