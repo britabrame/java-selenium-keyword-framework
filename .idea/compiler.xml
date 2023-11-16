@@ -9,8 +9,5 @@
         <module name="java-selenium-keyword-framework" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="java-selenium-keyword-framework" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,0 +1,7 @@
+<suite name = "Main">
+    <test name="Regression">
+        <classes>
+            <class name="executionEngine.ExecutionTest"/>
+        </classes>
+    </test>
+</suite>
