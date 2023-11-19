@@ -19,8 +19,10 @@ public class ReadExcelSheet {
     /** This method uses Apache POI library to read test cases from the provided excel sheet, and store each
      * test and its steps in a TestCase object list for later processing. */
     private ArrayList readExcelSheet() throws IOException {
-        String filePath = Constants.testCaseFile;
-        File file = new File(filePath);
+        String fileSeparator = File.separator;
+        String filePath = String.format("%ssrc%stest%sjava%sexcelData%stestCases.xlsx", fileSeparator, fileSeparator, fileSeparator, fileSeparator, fileSeparator, fileSeparator);
+        String localDir = System.getProperty("user.dir");
+        File file = new File(localDir + filePath);
         FileInputStream fis = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet sheet = wb.getSheet("Sheet1");
