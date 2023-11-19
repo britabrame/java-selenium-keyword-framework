@@ -21,7 +21,7 @@ This is a sample of a "keyword-driven" Selenium/Java framework which executes te
     - Description: Description of the test step
 
 --- Current limitations ---
-Given the prompted time limit, the following features are not present in this implementation, but should be later implemented:
+Following features are not present in this implementation, but should be later implemented:
 - Support for Asserts: Asserts can be implemented as any other keywords, such as "assertElementVisible,"
 or "assertValue" using TestNG or JUnit test frameworks.
 - Reporting: There is no integration with any reporting tools, but it could be added using a tool such as ExtentReports.
