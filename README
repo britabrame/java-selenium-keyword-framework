@@ -1,7 +1,4 @@
---- Prompt ---
-Provide a code sample of a Selenium/keyword-driven framework created in 4-6 hours.
-
---- Introduction ---
+--- Overview ---
 This is a sample of a "keyword-driven" Selenium/Java framework which executes test cases where the steps, objects, and
   locators are externally defined in an excel sheet. The advantage of such a framework is that once all keywords are defined
   and methods implemented for each, there should be very little or no additional coding needed to extend the framework,
