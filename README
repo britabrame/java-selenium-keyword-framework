@@ -14,7 +14,7 @@ Benefits of this framework are:
 ## Writing test scripts
 Each test must be entered into the excel in the expected format:
 ![Screenshot](https://github.com/britabrame/java-selenium-keyword-framework/blob/master/testScriptImage.png?raw=true)
-
+ 
 ### Columns:
 * **Title**: Test case title - marks the beginning of a new test
 * **Step ID:** Step number
