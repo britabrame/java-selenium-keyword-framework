@@ -1,26 +1,28 @@
 package excelUtility;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import keywordDriven.Actions;
 import testCase.TestCase;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import utility.Constants;
 
-/** Utility for reading test case data from the provided excel sheet.*/
+/** Utility for reading test case data from the provided excel sheet. */
 public class ReadExcelSheet {
 
-    /** This method uses Apache POI library to read test cases from the provided excel sheet, and store each
-     * test and its steps in a TestCase object list for later processing. */
-    private ArrayList readExcelSheet() throws IOException {
+    /**
+     * This method uses Apache POI library to read test cases from the provided
+     * excel sheet, and store each
+     * test and its steps in a TestCase object list for later processing.
+     */
+    public ArrayList<TestCase> readExcelSheet() throws IOException {
         String fileSeparator = File.separator;
-        String filePath = String.format("%ssrc%stest%sjava%sexcelData%stestCases.xlsx", fileSeparator, fileSeparator, fileSeparator, fileSeparator, fileSeparator, fileSeparator);
+        String filePath = String.format("%ssrc%stest%sjava%sexcelData%stestCases.xlsx", fileSeparator, fileSeparator,
+                fileSeparator, fileSeparator, fileSeparator, fileSeparator);
         String localDir = System.getProperty("user.dir");
         File file = new File(localDir + filePath);
         FileInputStream fis = new FileInputStream(file);
@@ -34,13 +36,14 @@ public class ReadExcelSheet {
         // Read excel sheet to store test cases/steps as TestCase testCase
         ArrayList<TestCase> tests = new ArrayList<TestCase>();
         int testCaseCounter = 0;
-        while(row.hasNext()) {
+        while (row.hasNext()) {
             Row r = (Row) row.next();
 
             // Moving cursor to the cell by getting a cell number.
             Cell cell = r.getCell(0);
 
-            // If the title column is not empty, then it is a new test case and a new test definition must be created
+            // If the title column is not empty, then it is a new test case and a new test
+            // definition must be created
             String titleColumn = cell.getStringCellValue();
             if (titleColumn != null && !titleColumn.trim().isEmpty()) {
                 tests.add(new TestCase(titleColumn));
@@ -56,38 +59,8 @@ public class ReadExcelSheet {
             String desc = r.getCell(6).getStringCellValue();
 
             tests.get(testCaseCounter - 1).addStep(stepId, keyword, object, objectType, data, desc);
-
         }
+
         return tests;
     }
-
-    /** Calls the readExcelSheet() method, iterates over the tests case testCase returned from that method, and executes
-     *  test steps using the perform() method from the Actions class. */
-    public void executeTests() throws IOException, InterruptedException {
-        ArrayList<TestCase> tests = readExcelSheet();
-        Actions actions = new Actions();
-        String keyword;
-        String object;
-        String objectType;
-        String data;
-        String description;
-
-        // Iterate ove test cases and pass test details to the Actions.perform() method
-        for(int i = 0; i < tests.size(); i++) {
-            System.out.println("Executing test: " + tests.get(i).getTitle());
-            for (int p = 0; p < tests.get(i).getSteps().size(); p++) {
-                keyword = tests.get(i).getStep(p).getKeyword();
-                object = tests.get(i).getStep(p).getObject();
-                objectType = tests.get(i).getStep(p).getObjectType();
-                data = tests.get(i).getStep(p).getData();
-                description = tests.get(i).getStep(p).getDescription();
-
-                System.out.println("  Executing step: " + description);
-                actions.perform(keyword,object,objectType,data,description);
-            }
-        }
-        System.out.print("End of test script");
-
-    }
 }
-

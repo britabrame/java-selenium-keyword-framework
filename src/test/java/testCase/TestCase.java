@@ -1,7 +1,6 @@
 package testCase;
 
 import java.util.ArrayList;
-
 import org.openqa.selenium.WebDriver;
 import keywordDriven.Actions;
 
@@ -46,33 +45,30 @@ public class TestCase {
         steps.add(step);
     }
 
-    private static WebDriver driver;
-
     /**
      * This method takes test step details and calls the appropriate action method
      * for the given step.
      */
-    public void perform(String keyword, String obj, String objectType, String data, String desc)
+    public void executeStep(String keyword, String obj, String objectType, String data, String desc)
             throws InterruptedException {
         switch (keyword.toLowerCase()) {
             case "openbrowser":
-                openBrowser();
+                actions.openBrowser();
                 break;
             case "goto":
-                goTo(data);
+                actions.goTo(data);
                 break;
             case "closebrowser":
-                closeBrowser();
+                actions.closeBrowser();
                 break;
             case "click":
-                clickElement(obj, objectType);
+                actions.clickElement(obj, objectType);
                 break;
             case "input":
-                input(obj, objectType, data);
+                actions.input(obj, objectType, data);
                 break;
             case "expectVisible":
-                // todo
-                expectVisible(obj, objectType);
+                actions.expectVisible(obj, objectType);
                 break;
         }
     }
