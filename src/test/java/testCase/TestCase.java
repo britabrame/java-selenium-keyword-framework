@@ -2,18 +2,19 @@ package testCase;
 
 import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
-import keywordDriven.Actions;
+
+import utility.Keywords;
 
 public class TestCase {
     private String title;
     private String testId;
     private ArrayList<Step> steps;
-    private Actions actions;
+    private Keywords actions;
 
     public TestCase(String title) {
         setTitle(title);
         steps = new ArrayList<>();
-        actions = new Actions();
+        actions = new Keywords();
     }
 
     public String getTitle() {

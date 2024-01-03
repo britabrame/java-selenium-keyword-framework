@@ -1,7 +1,7 @@
 <suite name = "Main">
     <test name="Regression">
         <classes>
-            <class name="executionEngine.ExecutionTest"/>
+            <class name="testExecution.DataProviderTest"/>
         </classes>
     </test>
 </suite>

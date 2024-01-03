@@ -1,17 +1,21 @@
-package executionEngine;
+package testExecution;
 
 import testCase.TestCase;
+import utility.ReadExcelSheet;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import excelUtility.ReadExcelSheet;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataProviderTest {
 
+    /**
+     * Data provider method. This prepares all of the test cases into an Object
+     * array
+     * to be used by the executeTest() method.
+     */
     @DataProvider(name = "createTestsArray")
     public Object[][] createTestsArray() throws IOException {
         ReadExcelSheet reader = new ReadExcelSheet();
@@ -24,6 +28,12 @@ public class DataProviderTest {
         return tests2;
     }
 
+    /**
+     * Test method which takes a TestCase from the DatProvider's Object array and
+     * executes the test steps. This method is called for every TestCase in the
+     * DataProvider's
+     * Object array.
+     */
     @Test(dataProvider = "createTestsArray")
     public void executeTest(TestCase testCase) throws IOException, InterruptedException {
         String keyword;

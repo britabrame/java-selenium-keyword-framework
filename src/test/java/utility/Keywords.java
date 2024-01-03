@@ -1,12 +1,10 @@
-package keywordDriven;
+package utility;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,38 +14,8 @@ import org.testng.Assert;
  * Each of the private methods
  * corresponds to a keyword that can be used in the test case excel sheet.
  */
-public class Actions {
+public class Keywords {
     private static WebDriver driver;
-
-    // /**
-    // * This method takes test step details and calls the appropriate action method
-    // * for the given step.
-    // */
-    // public void perform(String keyword, String obj, String objectType, String
-    // data, String desc)
-    // throws InterruptedException {
-    // switch (keyword.toLowerCase()) {
-    // case "openbrowser":
-    // openBrowser();
-    // break;
-    // case "goto":
-    // goTo(data);
-    // break;
-    // case "closebrowser":
-    // closeBrowser();
-    // break;
-    // case "click":
-    // clickElement(obj, objectType);
-    // break;
-    // case "input":
-    // input(obj, objectType, data);
-    // break;
-    // case "expectVisible":
-    // // todo
-    // expectVisible(obj, objectType);
-    // break;
-    // }
-    // }
 
     /** Method for keyword "openBrowser." */
     public void openBrowser() throws InterruptedException {
