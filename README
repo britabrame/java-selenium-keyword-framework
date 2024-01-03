@@ -1,33 +1,47 @@
---- Overview ---
-This is a sample of a "keyword-driven" Selenium/Java framework which executes test cases where the steps, objects, and
-  locators are externally defined in an excel sheet. The advantage of such a framework is that once all keywords are defined
-  and methods implemented for each, there should be very little or no additional coding needed to extend the framework,
-  as users can simply add test cases into an excel sheet.
+## About
+This **keyword-driven** framework takes common test step actions (goTo, click, input, etc) and implements reusable code to execute those actions using Selenium WebDriver. Test scripts are created in an Excel sheet where each test step is represented by a keyword and its relevant parameters (selector, selector type, test data). 
 
---- Features currently included in the framework ---
- - A file located in ...\java-selenium-keyword-framework\src\main\java\excelData\testCases.xlsx contains the test
- cases that will be executed.
- - Test case excel template:
-    - Title: title of the test case, appears on the same row as the first test step
-    - Step ID: Test step id
-    - Keyword: Action to be performed; currently supported keywords are "openBrowser," "goTo," "input," "click,"
-    "closeBrowser"
-    - Object: The value of the locator id, class, or xpath
-    - Object Type: Object's locator type; valid values are "Id," "class," or "xpath"
-    - Data: Data that is necessary to perform the action (username, password, search criteria, etc)
-    - Description: Description of the test step
+Benefits of this framework are:
+* It keeps coding and test scripting separate, so anyone can contribute to writing tests, regardless of technical skills
+* Reduces duplication of code by implementing more generic methods for interacting with web elements
 
---- Current limitations ---
-Following features are not present in this implementation, but should be later implemented:
-- Support for Asserts: Asserts can be implemented as any other keywords, such as "assertElementVisible,"
-or "assertValue" using TestNG or JUnit test frameworks.
-- Reporting: There is no integration with any reporting tools, but it could be added using a tool such as ExtentReports.
-- Test case validation: Currently the test case excel sheet allows the user to input any values into the Keywords column
-without validation, but ideally users would be provided a sheet where the Keyword column has dropdown values
- corresponding to the currently supported keywords.
+### Built with
+* Java
+* Selenium WebDriver
+* TestNG
+* Maven
 
---- How to execute test script ---
- - Execute the tests from the ExecutionTest class.
- - It is expected due to the time limit on this assignment that the test script will fail to execute all steps in it's
- current state, but currently the user should be able to see the navigation to https://www.saucedemo.com/, input of
- username and password, and login.
+## Writing test scripts
+Each test must be entered into the excel in the expected format:
+![Screenshot](https://github.com/britabrame/java-selenium-keyword-framework/blob/master/testScriptImage.png?raw=true)
+
+### Columns:
+* **Title**: Test case title - marks the beginning of a new test
+* **Step ID:** Step number
+* **Keyword:** Any of the supported keywords (see Support Keywords section)
+* **Object:** An id, class, or xpath of a web element to take action on, if required
+* **Object Type:** Selector type (currently support id, class, and xpath - should be improved to support more flexible CSS selector strategy)
+* **Data:** Any data needed to perform the action (ex: text to input)
+* **Description:** Description of the test step, for logging
+
+### Supported Keywords
+* **openBrowser**: Begin each test case by opening the browser (this could be later built into the code instead of being explicitly called)
+* **goTo**: Navigate to the specified URL in the Data column
+* **input**: Type the value from the Data column into the element specified in the Object column
+* **click**: Click the element specified in the Object column
+* **expectVisible:** Assert that the specified element is visible
+* **closeBrowser:** End the test by closing the browser
+
+## Setup
+1. Clone the project:
+	```
+	git clone https://github.com/britabrame/java-selenium-keyword-framework.git
+	```
+1. Install maven if it is not already installed locally
+
+## Running tests
+2. Run tests:
+	```
+	mvn test
+	```
+
