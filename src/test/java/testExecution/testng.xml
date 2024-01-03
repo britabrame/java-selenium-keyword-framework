@@ -1,7 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
 <suite name = "Main">
     <test name="Regression">
         <classes>
-            <class name="testExecution.DataProviderTest"/>
+            <class name="testExecution.ExecutionEngine"/>
         </classes>
     </test>
 </suite>

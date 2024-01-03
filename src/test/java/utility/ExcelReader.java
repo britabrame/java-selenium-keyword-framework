@@ -2,6 +2,7 @@ package utility;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,12 +13,14 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /** Utility for reading test case data from the provided excel sheet. */
-public class ReadExcelSheet {
+public class ExcelReader {
 
     /**
      * This method uses Apache POI library to read test cases from the provided
      * excel sheet, and store each
      * test and its steps in a TestCase object list for later processing.
+     * 
+     * @throws IOException
      */
     public ArrayList<TestCase> readExcelSheet() throws IOException {
         String fileSeparator = File.separator;
@@ -62,5 +65,6 @@ public class ReadExcelSheet {
         }
 
         return tests;
+
     }
 }

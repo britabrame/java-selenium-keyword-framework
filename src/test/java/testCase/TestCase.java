@@ -1,5 +1,6 @@
 package testCase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import org.openqa.selenium.WebDriver;
 
@@ -50,7 +51,7 @@ public class TestCase {
      * This method takes test step details and calls the appropriate action method
      * for the given step.
      */
-    public void executeStep(String keyword, String obj, String objectType, String data, String desc)
+    private void executeStep(String keyword, String obj, String objectType, String data, String desc)
             throws InterruptedException {
         switch (keyword.toLowerCase()) {
             case "openbrowser":
@@ -71,6 +72,34 @@ public class TestCase {
             case "expectVisible":
                 actions.expectVisible(obj, objectType);
                 break;
+        }
+    }
+
+    public void executeTest() {
+        String keyword;
+        String object;
+        String objectType;
+        String data;
+        String description;
+        int stepsCount = getSteps().size();
+
+        System.out.print("Executing test case: " + getTitle());
+
+        // Iterate over test steps and pass test details to the executeStep method
+        for (int i = 0; i < stepsCount; i++) {
+            keyword = getStep(i).getKeyword();
+            object = getStep(i).getObject();
+            objectType = getStep(i).getObjectType();
+            data = getStep(i).getData();
+            description = getStep(i).getDescription();
+
+            System.out.println("  Executing step: " + description);
+            try {
+                executeStep(keyword, object, objectType, data, description);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
