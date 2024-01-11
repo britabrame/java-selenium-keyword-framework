@@ -1,5 +1,9 @@
 package testCase;
 
+/**
+ * This Plain Old Java Object (POJO) is crafted to encapsulate and manage test step details retrieved from an Excel sheet representing the test script.
+ */
+
 public class Step {
     private String stepId;
     private String keyword;
@@ -66,9 +70,5 @@ public class Step {
     public String getDescription() {
         return description;
     }
-
-
-
-
 
 }

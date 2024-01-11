@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class ExecutionEngine {
 
     /**
-     * Main test, which creates a list of TestCases using the ExcelReader and
-     * then calls the executeTest() method on each test case.
+     * Creates a list of TestCases using the ExcelReader and
+     * then calls the TestCase.executeTest() method on each test case.
      */
     @Test
     public void executeTests() throws IOException {

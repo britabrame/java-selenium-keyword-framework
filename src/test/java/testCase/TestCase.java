@@ -6,6 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 import utility.Keywords;
 
+/**
+ * This Plain Old Java Object (POJO) is designed to encapsulate and manage test case details retrieved from an Excel sheet representing the test script. It also provides functionality for executing the associated test.
+ */
+
 public class TestCase {
     private String title;
     private String testId;

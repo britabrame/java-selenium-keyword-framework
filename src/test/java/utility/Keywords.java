@@ -10,9 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 /**
- * This class contains methods needed to issue commands to Selenium WebDriver.
- * Each of the private methods
- * corresponds to a keyword that can be used in the test case excel sheet.
+ * This class manages methods needed to issue commands to Selenium WebDriver.
+ * Each of the private methods corresponds to a keyword that can be used in the Excel test script.
  */
 public class Keywords {
     private static WebDriver driver;
@@ -80,6 +79,7 @@ public class Keywords {
         }
     }
 
+    /** Method for keyword "expectVisible." */
     public void expectVisible(String obj, String objectType) {
         WebElement el;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
